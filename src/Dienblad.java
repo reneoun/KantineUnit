@@ -5,13 +5,13 @@ import java.util.Stack;
 public class Dienblad {
     private ArrayList<Artikel> artikelen;
     private Persoon persoon;
-    private String totaalToString;
 
     public Dienblad() {
-        this.artikelen = new ArrayList();
+        this.artikelen = new ArrayList<>();
     }
 
     public Dienblad(Persoon persoon){
+        this();
         this.persoon = persoon;
     }
 
@@ -23,15 +23,13 @@ public class Dienblad {
         return artikelen.size();
     }
 
-    public String getTotaalPrijs() {
-        double totaal = 0;
-        double prijs = 0;
-        totaalToString = Double.toString(totaal);
+    public Double getTotaalPrijs() {
+        double totaal = 0.00;
 
         for(int i = 0; i <= getAantalArtikelen(); i++){
-            totaal = totaal + artikelen.get(i).getPrice();
+            totaal += artikelen.get(i).getPrice();
         }
-        return "De totaalprijs bedraagd: " + totaalToString + " euro";
+        return totaal;
     }
 
     public Persoon getPersoon() {
