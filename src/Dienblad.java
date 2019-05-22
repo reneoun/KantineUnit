@@ -23,13 +23,21 @@ public class Dienblad {
         return artikelen.size();
     }
 
-    public Double getTotaalPrijs() {
-        double totaal = 0.00;
-
+    public String getTotaalPrijs() {
+        double totaal = 0;
         for(int i = 0; i <= getAantalArtikelen(); i++){
-            totaal += artikelen.get(i).getPrice();
+            totaal = totaal + artikelen.get(i).getPrice();
         }
-        return totaal;
+        String totaalToString = Double.toString(totaal);
+        return "De totaalprijs bedraagd: " + totaalToString + " euro";
+    }
+
+    public double getPrijsDienblad() {
+        double prijsDienblad = 0;
+        for(int i = 0; i <= getAantalArtikelen(); i++){
+            prijsDienblad = prijsDienblad + artikelen.get(i).getPrice();
+        }
+        return prijsDienblad;
     }
 
     public Persoon getPersoon() {

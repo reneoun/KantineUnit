@@ -6,8 +6,13 @@ public class KassaRij {
     /**
      * Constructor
      */
+    ArrayList<Dienblad> positieInRij;
+
+
     public KassaRij() {
         // method body omitted
+        //ArrayList<String> dienblad = new ArrayList<String>()
+        positieInRij = new ArrayList<>();
     }
 
     /**
@@ -17,6 +22,9 @@ public class KassaRij {
      */
     public void sluitAchteraan(Dienblad klant) {
         // method body omitted
+        //Dienblad.add();
+        positieInRij.add(klant);
+
     }
 
     /**
@@ -28,6 +36,10 @@ public class KassaRij {
      */
     public Dienblad eerstePersoonInRij() {
         // method body omitted
+        if(positieInRij.get(0) == null) {
+            return null;
+        }
+        positieInRij.remove(0);
     }
 
     /**
@@ -36,6 +48,11 @@ public class KassaRij {
      * @return Of er wel of geen rij bestaat
      */
     public boolean erIsEenRij() {
-        // method body omitted
+        if(positieInRij.size() > 0){
+            return true;
+        }    else{
+            return false;
+        }
+
     }
 }
