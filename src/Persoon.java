@@ -17,10 +17,18 @@ public class Persoon {
         }
     }
 
+    public Persoon(){
+        bsn = "0000000000";
+        voornaam = "Niemand";
+        achternaam = "GeenAchternaam";
+        geboortedatum = new Datum(0,0,0);
+        geslacht = 'o';
+    }
+
     public String getGeslacht() {
         if (this.geslacht == 'm') return "Man";
         else if (this.geslacht == 'v') return "Vrouw";
-        else return "";
+        else return "Onbekend";
     }
 
     public String getGeboortedatum() {
@@ -59,4 +67,8 @@ public class Persoon {
         this.voornaam = voornaam;
     }
 
+    @Override
+    public String toString() {
+        return this.voornaam+" "+this.achternaam+" "+this.bsn+" "+geboortedatum.getDatumAsString()+" "+getGeslacht();
+    }
 }

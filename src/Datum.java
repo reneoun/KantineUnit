@@ -67,6 +67,9 @@ public class Datum {
 	 * @return Geboortedatum
 	 */
 	public String getDatumAsString() {
+	    if (!(bestaatDatum(this.dag,this.maand,this.jaar))){
+	        return "Onbekend";
+        }
 		return dag + " " + maandname[this.maand-1] + " " + jaar;
 	}
 }
