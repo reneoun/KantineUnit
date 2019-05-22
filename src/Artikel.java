@@ -27,4 +27,8 @@ public class Artikel {
     public double getPrice() {
         return this.price;
     }
+
+    public String toString(){
+        return getName()+" "+getPrice();
+    }
 }
