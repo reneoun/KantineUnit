@@ -4,40 +4,42 @@ import java.util.Stack;
 
 public class Dienblad {
     private ArrayList<Artikel> artikelen;
+    private Persoon persoon;
+    private String totaalToString;
 
-    /**
-     * Constructor
-     */
     public Dienblad() {
-        // method body omitted
+        this.artikelen = new ArrayList();
     }
 
-    /**
-     * Methode om artikel aan dienblad toe te voegen
-     *
-     * @param artikel
-     */
+    public Dienblad(Persoon persoon){
+        this.persoon = persoon;
+    }
+
     public void voegToe(Artikel artikel) {
-        // method body omitted
+        this.artikelen.add(artikel);
     }
 
-    /**
-     * Methode om aantal artikelen op dienblad te tellen
-     *
-     * @return Het aantal artikelen
-     */
     public int getAantalArtikelen() {
-        // method body omitted
+        return artikelen.size();
     }
 
-    /**
-     * Methode om de totaalprijs van de artikelen
-     * op dienblad uit te rekenen
-     *
-     * @return De totaalprijs
-     */
-    public double getTotaalPrijs() {
-        // method body omitted
+    public String getTotaalPrijs() {
+        double totaal = 0;
+        double prijs = 0;
+        totaalToString = Double.toString(totaal);
+
+        for(int i = 0; i <= getAantalArtikelen(); i++){
+            totaal = totaal + artikelen.get(i).getPrice();
+        }
+        return "De totaalprijs bedraagd: " + totaalToString + " euro";
+    }
+
+    public Persoon getPersoon() {
+        return persoon;
+    }
+
+    public void setPersoon(Persoon persoon) {
+        this.persoon = persoon;
     }
 }
 
