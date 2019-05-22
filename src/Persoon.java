@@ -10,17 +10,21 @@ public class Persoon {
         voornaam = v;
         achternaam = a;
         geboortedatum = d;
-        geslacht = g;
+        geslacht = Character.toLowerCase(g);
+
+        if (!(geslacht == 'm' && geslacht == 'v')){
+            System.out.println("Je hebt geen m of v ingevuld, LUL!");
+        }
     }
 
     public String getGeslacht() {
-        if (this.geslacht == 'M') return "Man";
-        else if (this.geslacht == 'V') return "Vrouw";
+        if (this.geslacht == 'm') return "Man";
+        else if (this.geslacht == 'v') return "Vrouw";
         else return "";
     }
 
     public String getGeboortedatum() {
-        return geboortedatum.get;
+        return geboortedatum.getDatumAsString();
     }
 
     public String getAchternaam() {

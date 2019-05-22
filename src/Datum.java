@@ -47,15 +47,15 @@ public class Datum {
 
 	public boolean bestaatDatum(int dag, int maand, int jaar){
 		if (dag >= 1 && maand >= 1 && maand <= 12 && jaar >= 1900 && jaar <= 2100) {
-			if ((maand+2) % 2 == 1 && dag <= 31) {
+			if ((maand+2 % 2) == 1 && dag <= 31) {
 				return true;
 			}
-			else if((maand+2) % 2 == 0 && dag <=30) {
+			else if((maand+2 % 2) == 0 && dag <=30) {
 				if (maand == 2 && dag <= 29 && (jaar % 100) == 0) {
 					if (maand == 2 && dag <= 29 && (jaar % 400) == 0) {return true;}
 					return false;
 				}
-				else if (maand == 2 && dag <= 29 && jaar % 4 == 0) {return true;}
+				else if (maand == 2 && dag <= 29 && (jaar % 4) == 0) {return true;}
 				else if (maand == 2 && dag <= 28) {return true;}
 			}
 		}
