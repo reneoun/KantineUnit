@@ -2,7 +2,7 @@ public class Artikel {
     String name;
     double price;
 
-    public Artikel(String n, float p) {
+    public Artikel(String n, double p) {
         this.name = n;
         this.price = p;
     }

@@ -39,7 +39,9 @@ public class KassaRij {
         if(positieInRij.get(0) == null) {
             return null;
         }
+        Dienblad eerste = positieInRij.get(0);
         positieInRij.remove(0);
+        return eerste;
     }
 
     /**

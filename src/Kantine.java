@@ -19,14 +19,19 @@ public class Kantine {
      */
     public void loopPakSluitAan() {
         // method body omitted
+        Dienblad dienblad = new Dienblad();
+        dienblad.voegToe(new Artikel("dildo", 5.99));
+        dienblad.voegToe(new Artikel("buttplug", 9.99));
+        kassarij.sluitAchteraan(dienblad);
     }
 
     /**
      * Deze methode handelt de rij voor de kassa af.
      */
     public void verwerkRijVoorKassa() {
-        while() {
+        while(kassarij.erIsEenRij()) {
             // omitted
+            kassa.rekenAf(kassarij.eerstePersoonInRij());
         }
     }
 
@@ -37,6 +42,7 @@ public class Kantine {
      */
     public double hoeveelheidGeldInKassa() {
        // method body omitted
+        return kassa.hoeveelheidGeldInKassa();
     }
 
     /**
@@ -46,6 +52,7 @@ public class Kantine {
      */
     public int aantalArtikelen() {
         // method body omitted
+        return kassa.aantalArtikelen();
     }
 
     /**
@@ -54,5 +61,6 @@ public class Kantine {
      */
     public void resetKassa() {
         // method body omitted
+        kassa.resetKassa();
     }
 }
