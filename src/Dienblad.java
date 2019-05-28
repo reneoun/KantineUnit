@@ -1,22 +1,23 @@
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Stack;
+import model.Artikel;
 
 public class Dienblad {
-    private ArrayList<Artikel> artikelen;
+    private Stack<Artikel> artikelen;
     private Persoon persoon;
 
+
     public Dienblad() {
-        this.artikelen = new ArrayList<>();
+        this.artikelen = new Stack<>();
+
     }
 
-    public Dienblad(Persoon persoon){
+    public Dienblad(Artikel artikel){
         this();
-        this.persoon = persoon;
+        this.artikelen = new Stack<>();
     }
 
     public void voegToe(Artikel artikel) {
-        this.artikelen.add(artikel);
+        this.artikelen.push(artikel);
     }
 
     public int getAantalArtikelen() {
