@@ -1,5 +1,4 @@
 import java.util.Stack;
-import model.Artikel;
 
 public class Dienblad {
     private Stack<Artikel> artikelen;
