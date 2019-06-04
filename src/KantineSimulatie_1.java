@@ -1,8 +1,11 @@
+import java.lang.*;
+
 public class KantineSimulatie_1 {
 
     private Kantine kantine;
 
-    public static final int DAGEN = 7;
+
+    public static final int DAGEN = 50;
 
     public KantineSimulatie_1() {
         kantine = new Kantine();
@@ -10,11 +13,14 @@ public class KantineSimulatie_1 {
 
     public void simuleer(int dagen) {
         for(int i = 0; i <= dagen; i++) {
-
             for(int j = 0; j < (10 + i); j++){
                 kantine.loopPakSluitAan();
             }
-
+            try {
+                Thread.sleep(500);
+            } catch (Exception e){
+                System.out.println(e);
+            }
             kantine.verwerkRijVoorKassa();
             System.out.println("De kassa bevat: " + kantine.hoeveelheidGeldInKassa() + " euro.");
             System.out.println("De kantine beschikt over: " + kantine.aantalArtikelen() + " artikelen.");
@@ -32,4 +38,5 @@ public class KantineSimulatie_1 {
         KantineSimulatie_1 kantinesimulatie = new KantineSimulatie_1();
         kantinesimulatie.simuleer(dagen);
     }
+
 }

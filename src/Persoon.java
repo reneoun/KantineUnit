@@ -13,7 +13,7 @@ public class Persoon {
         geslacht = Character.toLowerCase(g);
 
         if (!(geslacht == 'm' && geslacht == 'v')){
-            System.out.println("Je hebt geen m of v ingevuld, LUL!");
+            System.out.println("Je hebt geen m of v ingevuld, drol!");
         }
     }
 

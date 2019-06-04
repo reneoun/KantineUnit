@@ -45,6 +45,7 @@ public class Datum {
 		return jaar;
 	}
 
+	//verbeteren
 	public boolean bestaatDatum(int dag, int maand, int jaar){
 		if (dag >= 1 && maand >= 1 && maand <= 12 && jaar >= 1900 && jaar <= 2100) {
 			if ((maand+2 % 2) == 1 && dag <= 31) {

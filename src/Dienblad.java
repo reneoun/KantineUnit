@@ -3,16 +3,17 @@ import java.util.Stack;
 public class Dienblad {
     private Stack<Artikel> artikelen;
     private Persoon persoon;
+    double totaalPrijs = 0;
+    double prijsDienblad = 0;
 
 
     public Dienblad() {
         this.artikelen = new Stack<>();
-
     }
 
     public Dienblad(Artikel artikel){
         this();
-        this.artikelen = new Stack<>();
+        this.artikelen.push(artikel);
     }
 
     public void voegToe(Artikel artikel) {
@@ -24,17 +25,15 @@ public class Dienblad {
     }
 
     public String getTotaalPrijs() {
-        double totaal = 0;
         for(int i = 0; i <= getAantalArtikelen(); i++){
-            totaal = totaal + artikelen.get(i).getPrice();
+            totaalPrijs = totaalPrijs + artikelen.get(i).getPrice();
         }
-        String totaalToString = Double.toString(totaal);
+        String totaalToString = Double.toString(totaalPrijs);
         return "De totaalprijs bedraagd: " + totaalToString + " euro";
     }
 
     public double getPrijsDienblad() {
-        double prijsDienblad = 0;
-        for(int i = 0; i <= getAantalArtikelen(); i++){
+        for(int i = 0; i < getAantalArtikelen(); i++){
             prijsDienblad = prijsDienblad + artikelen.get(i).getPrice();
         }
         return prijsDienblad;
