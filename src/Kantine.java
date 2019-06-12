@@ -2,6 +2,7 @@ public class Kantine {
 
     private Kassa kassa;
     private KassaRij kassarij;
+    private KantineAanbod kantineAanbod;
 
     /**
      * Constructor
@@ -17,13 +18,31 @@ public class Kantine {
      * en plaats deze op het dienblad. Tenslotte sluit de
      * Persoon zich aan bij de rij voor de kassa.
      */
-    public void loopPakSluitAan() {
-        // method body omitted
-        Dienblad dienblad = new Dienblad();
-        dienblad.voegToe(new Artikel("dildo", 5.99));
-        dienblad.voegToe(new Artikel("buttplug", 9.99));
-        kassarij.sluitAchteraan(dienblad);
+//    public void loopPakSluitAan() {
+//        // method body omitted
+//        Persoon persoon = new Persoon();
+//
+//        Dienblad dienblad = new Dienblad();
+//        dienblad.voegToe(new Artikel("dildo", 5.99));
+//        dienblad.voegToe(new Artikel("buttplug", 9.99));
+//        dienblad.setPersoon(persoon);
+//
+//        kassarij.sluitAchteraan(persoon);
+//    }
+
+    public void setKantineAanbod(KantineAanbod kantineAanbod){
+        this.kantineAanbod = kantineAanbod;
     }
+
+    public void loopPakSluitAan(Persoon persoon, String[] artikelnamen) {
+        Dienblad dienblad = new Dienblad();
+        dienblad.setPersoon(persoon);
+        for (String s : artikelnamen) {
+            dienblad.voegToe(kantineAanbod.getArtikel(s));
+        }
+        kassarij.sluitAchteraan(persoon,dienblad);
+    }
+
 
     /**
      * Deze methode handelt de rij voor de kassa af.

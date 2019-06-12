@@ -5,6 +5,8 @@ public class KantineAanbod {
     private HashMap<String, ArrayList<Artikel>> aanbod;
     private HashMap<String, Integer> startVoorraad;
     private HashMap<String, Double> prijzen;
+
+    private int min_hoeveelheid;
     
     /**
      * Constructor. Het eerste argument is een lijst met artikelnamen,
@@ -12,10 +14,11 @@ public class KantineAanbod {
      * is een lijst met hoeveelheden. Let op: de dimensies van de drie arrays
      * moeten wel gelijk zijn!
      */
-    public KantineAanbod(String[] artikelnaam, double[] prijs, int[] hoeveelheid) {
+    public KantineAanbod(String[] artikelnaam, double[] prijs, int[] hoeveelheid, int m_hoeveelheid) {
         aanbod=new HashMap<String, ArrayList<Artikel>>();
         startVoorraad=new HashMap<String, Integer>();
         prijzen=new HashMap<String,Double>();
+        min_hoeveelheid = m_hoeveelheid;
         for(int i=0;i<artikelnaam.length;i++) 
         {
             ArrayList<Artikel> artikelen=new ArrayList<Artikel>();
@@ -33,12 +36,15 @@ public class KantineAanbod {
     	ArrayList<Artikel> huidigeVoorraad = aanbod.get(productnaam);
     	int startHoeveelheid = startVoorraad.get(productnaam);
     	int huidigeHoeveelheid = huidigeVoorraad.size();
+    	int toegenomen = 0;
     	double prijs = prijzen.get(productnaam);
         for(int j=huidigeHoeveelheid;j<startHoeveelheid;j++) 
         {
         	huidigeVoorraad.add(new Artikel(productnaam, prijs));
+        	toegenomen++;
         }
         aanbod.put(productnaam, huidigeVoorraad);
+        System.out.println("Het product '"+productnaam+"' is met "+toegenomen+" bijgevuld.");
     }
     
     /*
@@ -63,9 +69,9 @@ public class KantineAanbod {
         }
         else 
         {
-            Artikel a=stapel.get(0);
+            Artikel a = stapel.get(0);
             stapel.remove(0);
-            if(stapel.size()<=10)vulVoorraadAan(a.getNaam());
+            if(stapel.size()<=min_hoeveelheid)vulVoorraadAan(a.getName());
             return a;
         }
     }

@@ -1,13 +1,12 @@
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Stack;
 
 public class Dienblad {
-    private ArrayList<Artikel> artikelen;
+    private Stack<Artikel> artikelen;
     private Persoon persoon;
 
     public Dienblad() {
-        this.artikelen = new ArrayList<>();
+        this.artikelen = new Stack<>();
     }
 
     public Dienblad(Persoon persoon){
@@ -23,13 +22,9 @@ public class Dienblad {
         return artikelen.size();
     }
 
-    public String getTotaalPrijs() {
-        double totaal = 0;
-        for(int i = 0; i <= getAantalArtikelen(); i++){
-            totaal = totaal + artikelen.get(i).getPrice();
-        }
-        String totaalToString = Double.toString(totaal);
-        return "De totaalprijs bedraagd: " + totaalToString + " euro";
+    public Iterator<Artikel> getItArtikel() {
+      Iterator<Artikel> it = artikelen.iterator();
+      return it;
     }
 
     public double getPrijsDienblad() {

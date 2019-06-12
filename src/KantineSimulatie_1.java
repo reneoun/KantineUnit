@@ -17,10 +17,10 @@ public class KantineSimulatie {
      *
      * @param dagen
      */
-    public void simuleer(int dagen) {
+    public void simulate(int dagen) {
 
         // herhaal voor elke dag
-        for(int i = 0; ...) {
+        for(int i = 0; i < dagen;i++) {
 
             // per dag nu even vast 10 + i personen naar binnen
             // laten gaan, wordt volgende week veranderd...
