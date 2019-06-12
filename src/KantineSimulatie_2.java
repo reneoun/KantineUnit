@@ -115,7 +115,7 @@ public class KantineSimulatie_2 {
             int aantalpersonen = getRandomValue(MIN_PERSONEN_PER_DAG,MAX_PERSONEN_PER_DAG) ;
 
             // 100 personen worden hier gemaakt
-            for (int x = 0; x < 89; x++){
+            for (int x = 0; x < 100; x++){
                 String bsn = "bsnnmmr"+x;
                 String vnaam = "voornaam"+x;
                 String anaam = "achternaam"+x;
@@ -184,7 +184,9 @@ public class KantineSimulatie_2 {
 
                 // maak persoon en dienblad aan, koppel ze
                 // en bedenk hoeveel artikelen worden gepakt
-                int r = getRandomValue(0,99);
+                Random rndm = new Random();
+                int r = rndm.nextInt(100);
+                
                 Dienblad dienblad = new Dienblad();
                 dienblad.setPersoon(personen.get(r));
 
