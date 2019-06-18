@@ -144,7 +144,7 @@ public class KantineSimulatie_2 {
                 }
 
                 // 10 Docenten worden hiero gemaakt
-                if (x<99) {
+                else if (x<99) {
                     String alphabet = "QWERTYUIOPASDFGHJKLZXCVBNM";
                     String afdeling = "";
                     String afkorting = "";
@@ -186,7 +186,7 @@ public class KantineSimulatie_2 {
                 // en bedenk hoeveel artikelen worden gepakt
                 Random rndm = new Random();
                 int r = rndm.nextInt(100);
-                
+
                 Dienblad dienblad = new Dienblad();
                 dienblad.setPersoon(personen.get(r));
 
@@ -239,7 +239,7 @@ public class KantineSimulatie_2 {
 
         System.out.println(Administratie.berekenGemiddeldAantal(getallen));     //gem = 40.8333
         System.out.println(Administratie.berekenGemiddeldeOmzet(omzet));        //gem = 508.2833
-        System.out.printf(Administratie.berekenDagOmzet(omzetPeriode));
+//        System.out.printf(Administratie.berekenDagOmzet(omzetPeriode));
 
     }
 
