@@ -1,39 +1,35 @@
+import java.util.Iterator;
 import java.util.Stack;
 
 public class Dienblad {
     private Stack<Artikel> artikelen;
     private Persoon persoon;
-    double totaalPrijs = 0;
-    double prijsDienblad = 0;
-
 
     public Dienblad() {
         this.artikelen = new Stack<>();
     }
 
-    public Dienblad(Artikel artikel){
+    public Dienblad(Persoon persoon){
         this();
-        this.artikelen.push(artikel);
+        this.persoon = persoon;
     }
 
     public void voegToe(Artikel artikel) {
-        this.artikelen.push(artikel);
+        this.artikelen.add(artikel);
     }
 
     public int getAantalArtikelen() {
         return artikelen.size();
     }
 
-    public String getTotaalPrijs() {
-        for(int i = 0; i <= getAantalArtikelen(); i++){
-            totaalPrijs = totaalPrijs + artikelen.get(i).getPrice();
-        }
-        String totaalToString = Double.toString(totaalPrijs);
-        return "De totaalprijs bedraagd: " + totaalToString + " euro";
+    public Iterator<Artikel> getItArtikel() {
+      Iterator<Artikel> it = artikelen.iterator();
+      return it;
     }
 
     public double getPrijsDienblad() {
-        for(int i = 0; i < getAantalArtikelen(); i++){
+        double prijsDienblad = 0;
+        for(int i = 0; i <= getAantalArtikelen(); i++){
             prijsDienblad = prijsDienblad + artikelen.get(i).getPrice();
         }
         return prijsDienblad;

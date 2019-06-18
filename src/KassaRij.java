@@ -3,26 +3,33 @@ import java.util.LinkedList;
 
 public class KassaRij {
 
-    private ArrayList<Dienblad> positieInRij;
+    ArrayList<Dienblad> dienBladen;
+    LinkedList<Persoon> rijMensen;
 
 
     public KassaRij() {
-        positieInRij = new ArrayList<>();
+        rijMensen = new LinkedList<>();
+        dienBladen = new ArrayList<>();
     }
 
-    public void sluitAchteraan(Dienblad klant) {
-        positieInRij.add(klant);
+    public ArrayList<Dienblad> getDienbladen(){
+        return this.dienBladen;
     }
 
-    public Dienblad eerstePersoonInRij() {
+    public void sluitAchteraan(Persoon klant, Dienblad dienblad) {
+        rijMensen.add(klant);
+        dienBladen.add(dienblad);
+    }
+
+    public Persoon eerstePersoonInRij() {
         if(!erIsEenRij()) {
             return null;
         }
-        return positieInRij.remove(0);
+        return rijMensen.remove(0);
     }
 
     public boolean erIsEenRij() {
-        if(positieInRij.size() > 0){
+        if(rijMensen.size() > 0){
             return true;
         }    else{
             return false;
