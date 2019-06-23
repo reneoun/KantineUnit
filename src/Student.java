@@ -26,6 +26,7 @@ public class Student extends Persoon {
     }
 
     public String toString() {
-        return "Student "+voornaam+" is net naar binnengekomen.";
+        String gegevens2 = super.toString() + "Studentnummer: " + getStudentnummer() + ". \n" + "Studierichting: " + getStudierichting() + ". \n";
+        return gegevens2;
     }
 }

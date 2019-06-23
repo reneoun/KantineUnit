@@ -27,7 +27,9 @@ public class Docent extends Persoon {
         this.afkorting = afkorting;
     }
 
+    @Override
     public String toString() {
-        return "Docent "+voornaam+" is net naar binnengekomen.";
+        String gegevens1 = super.toString() + "Afdeling: " + getAfdeling() + ". \n" + "Afkorting: " + getAfkorting() + ". \n";
+        return gegevens1;
     }
 }

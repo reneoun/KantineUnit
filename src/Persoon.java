@@ -69,6 +69,11 @@ public class Persoon {
 
     @Override
     public String toString() {
-        return this.voornaam+" "+this.achternaam+" "+this.bsn+" "+geboortedatum.getDatumAsString()+" "+getGeslacht();
+        String gegevens = "Naam: " + getVoornaam() + ". \n"
+                        + "Achternaam: " + getAchternaam() + ". \n"
+                        + "BSN: " + getBsn() + ". \n"
+                        + "Geboortedatum: " + getGeboortedatum() + ". \n"
+                        + "Geslacht: " + getGeslacht() + ". \n";
+        return gegevens;
     }
 }

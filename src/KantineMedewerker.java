@@ -26,6 +26,14 @@ public class KantineMedewerker extends Persoon {
     }
 
     public String toString() {
-        return "Kantinemedewerker "+voornaam+" is net naar binnengekomen.";
+        String kw = "";
+        if(kassawaardig){
+            kw = "ja";
+        }
+        else{
+            kw = "nee";
+        }
+        String gegevens3 = super.toString() + "Medewerkersnummer: " + getMederwerkersnummer() + ". \n" + "Kassawaardig: " + kw;
+        return gegevens3;
     }
 }
