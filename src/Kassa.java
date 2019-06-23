@@ -13,12 +13,25 @@ public class Kassa {
     }
 
     public void rekenAf(Persoon klant) {
+
+        double totaal = 0;          //Word totaalprijs van het dienblad
+        int aantalArtikel = 0;      //Het aantal artikelen van het dienblad
+
         for (Dienblad d : kassaRij.getDienbladen()) {
-            if (d.getPersoon().equals(klant)){
+            if (d.getPersoon().equals(klant)){                  //Vind het dienblad die bij de persoon hoort
                 Iterator<Artikel> it = d.getItArtikel();
                 while(it.hasNext()){
-                    omzet = omzet + it.next().getPrice();
-                    aantalArtikelenDoor++;
+
+                    totaal = totaal + it.next().getPrice();     //Bereken de totaalprijs van het dienblad
+                    aantalArtikel++;                            //Bereken het aantal producten van een dienblad
+
+                }
+                if (klant.getBetaalwijze().betaal(totaal)){     //Bekijk of de klant genoeg Moneyzz heeft
+                    omzet += totaal;
+                    aantalArtikelenDoor += aantalArtikel;
+                    System.out.println("Klant heeft "+totaal+" betaald");
+                } else {
+                    System.out.println("Klant heeft niet genoeg Moneyzz");  //Klant heeft hier gefaald met de betaling
                 }
             }
         }

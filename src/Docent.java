@@ -1,6 +1,6 @@
 import javax.print.DocFlavor;
 
-public class Docent extends Persoon {
+public class Docent extends Persoon implements KortingskaartHouder{
 
     private String afdeling;
     private String afkorting;
@@ -29,5 +29,20 @@ public class Docent extends Persoon {
 
     public String toString() {
         return "Docent "+voornaam+" is net naar binnengekomen.";
+    }
+
+    @Override
+    public double geefKortingsPercentage() {
+        return 0.25;        //25% Korting voor Docenten.
+    }
+
+    @Override
+    public boolean heeftMaximum() {
+        return true;        //Docenten hebben wel een maximum korting
+    }
+
+    @Override
+    public double geefMaximum() {
+        return 1.00;        //De maximum korting is €1.00
     }
 }

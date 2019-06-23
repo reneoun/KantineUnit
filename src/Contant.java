@@ -4,5 +4,10 @@ public class Contant extends Betaalwijze {
      */
     public boolean betaal(double tebetalen) {
         // method body omitted
+        if (saldo >= tebetalen){
+            saldo = saldo - tebetalen;
+            return true;
+        }
+        return false;
     }
 }
