@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class KantineSimulatie_2 {
+public class KantineSimulatie {
 
     //Array van personen
     public ArrayList<Persoon> personen = new ArrayList<>();
@@ -40,7 +40,7 @@ public class KantineSimulatie_2 {
      * Constructor
      *
      */
-    public KantineSimulatie_2() {
+    public KantineSimulatie() {
         kantine = new Kantine();
         random = new Random();
         int[] hoeveelheden = getRandomArray(
@@ -246,7 +246,7 @@ public class KantineSimulatie_2 {
 
 
     public static void main(String[] args) {
-        KantineSimulatie_2 kantineSimulatie = new KantineSimulatie_2();
+        KantineSimulatie kantineSimulatie = new KantineSimulatie();
         kantineSimulatie.simuleer(15);
 
         int[] getallen = {45, 56, 34, 39, 40, 31};
