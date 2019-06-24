@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class KantineSimulatie {
+class KantineSimulatie {
 
     //Array van personen
     public ArrayList<Persoon> personen = new ArrayList<>();
