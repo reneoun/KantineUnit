@@ -21,15 +21,15 @@ public class KassaRij {
         dienBladen.add(dienblad);
     }
 
-    public Persoon eerstePersoonInRij() {
+    public Dienblad eerstePersoonInRij() {
         if(!erIsEenRij()) {
             return null;
         }
-        return rijMensen.remove(0);
+        return dienBladen.remove(0);
     }
 
     public boolean erIsEenRij() {
-        if(rijMensen.size() > 0){
+        if(dienBladen.size() > 0){
             return true;
         }    else{
             return false;

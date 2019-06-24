@@ -1,4 +1,4 @@
-import java.util.Iterator;
+import java.time.LocalDate;
 
 public class Kassa {
 
@@ -14,31 +14,17 @@ public class Kassa {
         this.manager = manager;
     }
 
-    public void rekenAf(Persoon klant){
+    public void rekenAf(Dienblad klant){
+
+        Persoon persoon = klant.getPersoon();
 
         double totaal = 0;          //Word totaalprijs van het dienblad
         int aantalArtikel = 0;      //Het aantal artikelen van het dienblad
 
-        for (Dienblad d : kassaRij.getDienbladen()) {
-            if (d.getPersoon().equals(klant)){                  //Vind het dienblad die bij de persoon hoort
-                Iterator<Artikel> it = d.getItArtikel();
-                while(it.hasNext()){
+        LocalDate datum = LocalDate.now();
+        Factuur factuur = new Factuur(klant,datum);
 
-                    totaal = totaal + it.next().getPrice();     //Bereken de totaalprijs van het dienblad
-                    aantalArtikel++;                            //Bereken het aantal producten van een dienblad
-
-                }
-                try {
-                    klant.getBetaalwijze().betaal(totaal);    //Bekijk of de klant genoeg Moneyzz heeft
-                    omzet += totaal;
-                    aantalArtikelenDoor += aantalArtikel;
-                }
-                catch (TeWeinigGeldException e){
-                    System.out.println(e.getMessage() + klant.getVoornaam() + " " + klant.getAchternaam());  //Klant heeft hier gefaald met de betaling
-
-                }
-            }
-        }
+        omzet += factuur.getTotaal();
     }
 
     public int aantalArtikelen() {
