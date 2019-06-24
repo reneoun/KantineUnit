@@ -5,6 +5,7 @@
     <persistence-unit name="JPAVoorbeeld">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <class>nl.hanze.jpa.Student</class>
+        <class>nl.hanze.jpa.StudentKaart</class>
         <class>nl.hanze.jpa.StudieInschrijving</class>
         <class>nl.hanze.jpa.Telefoon</class>
         <properties>
@@ -17,7 +18,7 @@
             -->
 
             <!-- The JDBC URL to the database instance -->
-            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/jpavoorbeeld?serverTimezone=EST" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/jpavoorbeeld" />
 
             <!-- PostgreSQL JDBC connection url example -->
             <!--
