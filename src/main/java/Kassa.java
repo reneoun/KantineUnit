@@ -16,11 +16,6 @@ public class Kassa {
 
     public void rekenAf(Dienblad klant){
 
-        Persoon persoon = klant.getPersoon();
-
-        double totaal = 0;          //Word totaalprijs van het dienblad
-        int aantalArtikel = 0;      //Het aantal artikelen van het dienblad
-
         LocalDate datum = LocalDate.now();
         Factuur factuur = new Factuur(klant,datum);
 

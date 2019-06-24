@@ -1,17 +1,20 @@
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import java.time.LocalDate;
 import java.io.Serializable;
 import java.util.Iterator;
 
+@Entity
+@Table(name = "factuur")
 public class Factuur implements Serializable {
 
     @Id
     @Column(name = "id", unique = true)
     private Long id;
-
-
+    
     @Column(name = "factuurDatum", nullable = false)
     private LocalDate datum;
 
