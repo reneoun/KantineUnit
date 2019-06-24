@@ -32,7 +32,7 @@ public class Kassa {
                     aantalArtikelenDoor += aantalArtikel;
                 }
                 catch (TeWeinigGeldException e){
-                    System.out.println(e.getMessage() + klant.voornaam + " " + klant.achternaam);  //Klant heeft hier gefaald met de betaling
+                    System.out.println(e.getMessage() + klant.getVoornaam() + " " + klant.getAchternaam());  //Klant heeft hier gefaald met de betaling
                 }
             }
         }
