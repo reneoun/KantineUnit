@@ -3,7 +3,7 @@ import java.util.*;
 public class KantineSimulatie_2 {
 
     //Array van personen
-    private ArrayList<Persoon> personen;
+    public ArrayList<Persoon> personen = new ArrayList<>();
 
     // kantine
     private Kantine kantine;
@@ -107,7 +107,7 @@ public class KantineSimulatie_2 {
      *
      * @param dagen
      */
-    public void simuleer(int dagen) {
+    public void simuleer(int dagen){
         // for lus voor dagen
         for(int i = 0; i < dagen; i++) {
 
@@ -116,19 +116,23 @@ public class KantineSimulatie_2 {
 
             // 100 personen worden hier gemaakt
             for (int x = 0; x < 100; x++){
+
                 String bsn = "bsnnmmr"+x;
                 String vnaam = "voornaam"+x;
                 String anaam = "achternaam"+x;
                 Datum datum = new Datum(x%28,x%12,2000);
-                char geslacht = 'o';
-                if ((x+2)%2==0) {
-                    geslacht = 'v';
-                } else {
-                    geslacht = 'm';
-                }
+                Contant contant = new Contant();
+                Pinpas pinpas = new Pinpas();
+
+                int manOfVrouw = getRandomValue(0,1);
+                char geslacht = ' ';
+                if (manOfVrouw == 0) geslacht = 'M';
+                else if (manOfVrouw == 1) geslacht = 'V';
+
 
                 // 89 Studenten worden hier gemaakt.
                 if (x<89) {
+
                     int studentenummer = Integer.valueOf("" + ((x + 8) % 8) + "420" + ((x + 11) % 11));
                     String studierichting = "";
                     int random = getRandomValue(1, 3);
@@ -140,6 +144,10 @@ public class KantineSimulatie_2 {
                         studierichting = "Bitm";
                     }
                     Student student = new Student(studentenummer,studierichting,bsn,vnaam,anaam,datum,geslacht);
+
+                    pinpas.setKredietLimiet((double) getRandomValue(6,50));         //We geven hier een student een pinpas met geld.
+                    student.setBetaalwijze(pinpas);
+
                     personen.add(student);
                 }
 
@@ -157,9 +165,13 @@ public class KantineSimulatie_2 {
                         afdeling = "Programmeren";
                     }
                     for (int s = 0; s < 4; s++) {
-                        afkorting += alphabet.charAt(getRandomValue(0,26));
+                        afkorting += alphabet.charAt(getRandomValue(0,25));
                     }
                     Docent docent = new Docent(bsn,vnaam,anaam,datum,geslacht,afdeling,afkorting);
+
+                    pinpas.setKredietLimiet((double) getRandomValue(6,50));         //We geven hier een Docent een pinpas met geld.
+                    docent.setBetaalwijze(pinpas);
+
                     personen.add(docent);
                 }
 
@@ -171,6 +183,10 @@ public class KantineSimulatie_2 {
                     if (r==0) kassawaardig = true;
                     else kassawaardig = false;
                     KantineMedewerker kantineMedewerker = new KantineMedewerker(bsn,vnaam,anaam,datum,geslacht,medewerkersnummer,kassawaardig);
+
+                    contant.setSaldo((double) getRandomValue(2,20));            // We geven hier een Kantine Medewerker contant geld.
+                    kantineMedewerker.setBetaalwijze(contant);
+
                     personen.add(kantineMedewerker);
                 }
 
@@ -231,7 +247,7 @@ public class KantineSimulatie_2 {
 
     public static void main(String[] args) {
         KantineSimulatie_2 kantineSimulatie = new KantineSimulatie_2();
-//        kantineSimulatie.simuleer(100);
+        kantineSimulatie.simuleer(15);
 
         int[] getallen = {45, 56, 34, 39, 40, 31};
         double[] omzet = {567.70, 498.25, 458.90};

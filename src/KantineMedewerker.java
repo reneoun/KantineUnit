@@ -1,4 +1,4 @@
-public class KantineMedewerker extends Persoon {
+public class KantineMedewerker extends Persoon implements KortingskaartHouder {
 
     private int mederwerkersnummer;
     private boolean kassawaardig;
@@ -35,5 +35,20 @@ public class KantineMedewerker extends Persoon {
         }
         String gegevens3 = super.toString() + "Medewerkersnummer: " + getMederwerkersnummer() + ". \n" + "Kassawaardig: " + kw;
         return gegevens3;
+    }
+
+    @Override
+    public double geefKortingsPercentage() {
+        return 0.35;    // 35% korting voor Kantine Medewerkers.
+    }
+
+    @Override
+    public boolean heeftMaximum() {
+        return false;   // Kantine Medewerkers hebben geen maximum
+    }
+
+    @Override
+    public double geefMaximum() {
+        return 0;       //Eigenlijk N.V.T.
     }
 }

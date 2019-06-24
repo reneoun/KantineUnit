@@ -3,17 +3,19 @@ public class Persoon {
     String voornaam;
     String achternaam;
     Datum geboortedatum;
-    Character geslacht;
+    char geslacht;
+    Betaalwijze betaalwijze;
 
-    public Persoon(String b, String v, String a, Datum d, Character g){
+    public Persoon(String b, String v, String a, Datum d, char g){
         bsn = b;
         voornaam = v;
         achternaam = a;
         geboortedatum = d;
         geslacht = Character.toLowerCase(g);
 
-        if (!(geslacht == 'm' && geslacht == 'v')){
-            System.out.println("Je hebt geen m of v ingevuld, drol!");
+
+        if (!(geslacht == 'm' || geslacht == 'v')){
+            System.out.println("Je hebt geen m of v ingevuld, LUL!");
         }
     }
 
@@ -29,6 +31,14 @@ public class Persoon {
         if (this.geslacht == 'm') return "Man";
         else if (this.geslacht == 'v') return "Vrouw";
         else return "Onbekend";
+    }
+
+    public void setBetaalwijze(Betaalwijze betaalwijze) {
+        this.betaalwijze = betaalwijze;
+    }
+
+    public Betaalwijze getBetaalwijze() {
+        return betaalwijze;
     }
 
     public String getGeboortedatum() {
@@ -69,11 +79,8 @@ public class Persoon {
 
     @Override
     public String toString() {
-        String gegevens = "Naam: " + getVoornaam() + ". \n"
-                        + "Achternaam: " + getAchternaam() + ". \n"
-                        + "BSN: " + getBsn() + ". \n"
-                        + "Geboortedatum: " + getGeboortedatum() + ". \n"
-                        + "Geslacht: " + getGeslacht() + ". \n";
-        return gegevens;
+        String vnaam = "naam:" + getVoornaam()+"\n";
+
+        return this.voornaam+" "+this.achternaam+" "+this.bsn+" "+geboortedatum.getDatumAsString()+" "+getGeslacht();
     }
 }
