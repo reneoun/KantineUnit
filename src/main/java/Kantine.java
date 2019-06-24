@@ -3,13 +3,14 @@ public class Kantine {
     private Kassa kassa;
     private KassaRij kassarij;
     private KantineAanbod kantineAanbod;
-
+    private javax.persistence.EntityManager manager;
     /**
      * Constructor
      */
-    public Kantine() {
+    public Kantine(javax.persistence.EntityManager manager) {
         kassarij = new KassaRij();
-        kassa = new Kassa(kassarij);
+        this.manager = manager;
+        kassa = new Kassa(kassarij, this.manager);
     }
 
     /**

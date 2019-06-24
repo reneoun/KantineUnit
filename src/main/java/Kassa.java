@@ -5,11 +5,13 @@ public class Kassa {
     private KassaRij kassaRij;
     private double omzet;
     private int aantalArtikelenDoor;
+    private javax.persistence.EntityManager manager;
 
-    public Kassa(KassaRij kassarij) {
+    public Kassa(KassaRij kassarij, javax.persistence.EntityManager manager) {
         this.kassaRij = kassarij;
         omzet = 0;
         aantalArtikelenDoor = 0;
+        this.manager = manager;
     }
 
     public void rekenAf(Persoon klant){
@@ -33,6 +35,7 @@ public class Kassa {
                 }
                 catch (TeWeinigGeldException e){
                     System.out.println(e.getMessage() + klant.getVoornaam() + " " + klant.getAchternaam());  //Klant heeft hier gefaald met de betaling
+
                 }
             }
         }
