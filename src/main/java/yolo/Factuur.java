@@ -23,8 +23,8 @@ public class Factuur implements Serializable {
     @Column(name = "totaal")
     private double totaal;
 
-//    @OneToMany(targetEntity = FactuurRegel.class, mappedBy = "factuur", cascade = CascadeType.ALL, orphanRemoval = true)
-//    private ArrayList<FactuurRegel> regels;
+    @OneToMany
+    private ArrayList<FactuurRegel> regels;
 
     public Factuur() {
         totaal = 0;
@@ -34,6 +34,7 @@ public class Factuur implements Serializable {
     public Factuur(Dienblad klant, LocalDate datum) {
         this();
         this.datum = datum;
+        this.regels = new ArrayList<FactuurRegel>();
         verwerkBestelling(klant);
     }
 
@@ -51,7 +52,7 @@ public class Factuur implements Serializable {
         while(it.hasNext()){
 
             totaal = totaal + it.next().getPrice();     //Bereken de totaalprijs van het dienblad
-
+            regels.add(new FactuurRegel(this, it.next()));
         }
         Persoon persoon = klant.getPersoon();
 
@@ -98,5 +99,11 @@ public class Factuur implements Serializable {
         return "Het bedrag was "+getTotaal()+" euro \n"
                 +"De klant heeft "+getKorting() + " euro korting gekregen \n"
                 +"de klant heeft afgerekent op "+ datum;
+    }
+
+    public void addRegel(FactuurRegel factuurRegel) {
+        if (!regels.contains(factuurRegel)) {
+            regels.add(factuurRegel);
+        }
     }
 }
