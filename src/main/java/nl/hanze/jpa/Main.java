@@ -1,5 +1,6 @@
 package nl.hanze.jpa;
 
+import yolo.Factuur;
 import yolo.KantineSimulatie_2;
 import org.hibernate.Session;
 import javax.persistence.*;
@@ -81,21 +82,27 @@ public class Main {
 
         // Verwijder een telefoon
         deleteTelefoon(appel);
-        listStudenten(readAll(), "Stap 5: Telefoon verloren?");
-        listStudieInschrijvingen(readAllStudies(), "Lijstje met studies");
-        listTelefoons(readAllTelefoons(), "Lijstje met telefoons");
+        listStudenten(readAll(), "\n\nStap 5: Telefoon verloren?");
+        listStudieInschrijvingen(readAllStudies(), "\nLijstje met studies");
+        listTelefoons(readAllTelefoons(), "\nLijstje met telefoons");
 
         // Verwijder een telefoon
         charlie.removeTelefoon(appel);
         update(charlie);
-        listStudenten(readAll(), "Stap 6: Telefoon echt verloren!");
-        listStudieInschrijvingen(readAllStudies(), "Lijstje met studies");
-        listTelefoons(readAllTelefoons(), "Lijstje met telefoons");
+        listStudenten(readAll(), "\n\nStap 6: Telefoon echt verloren!");
+        listStudieInschrijvingen(readAllStudies(), "\nLijstje met studies");
+        listTelefoons(readAllTelefoons(), "\nLijstje met telefoons");
         aggregateExamples();
 
         //Start Simulatie
         KantineSimulatie_2 sim = new KantineSimulatie_2(manager);
         sim.simuleer(10);
+
+        //Totale omzet & korting
+        getOmzet();
+
+        //Gemiddelde omzet & korting
+        getGemiddelde();
 
         // Close the EntityManager
         manager.close();
@@ -370,5 +377,38 @@ public class Main {
         Session session = manager.unwrap(Session.class);
         List<Telefoon> telefoons = session.createQuery("from Telefoon").list();
         return telefoons;
+    }
+
+//    public void listOmzet(List<Factuur> facturen, String comment) {
+//        System.out.println(comment);
+//        if (!facturen.isEmpty()) {
+//            for (Factuur stu : facturen) {
+//                System.out.println(stu);
+//            }
+//        } else {
+//            System.out.println("Leeg");
+//        }
+//    }
+//
+    public void getOmzet() {
+        Query query = manager.createQuery(
+                "SELECT SUM(totaal)FROM Factuur");
+        Double result = (Double) query.getSingleResult();
+        System.out.println("Totale Omzet: "+result);
+        query = manager.createQuery(
+                "SELECT SUM(korting)FROM Factuur");
+        result = (Double) query.getSingleResult();
+        System.out.println("Totale Korting: "+result);
+    }
+
+    public void getGemiddelde() {
+        Query query = manager.createQuery(
+                "select avg(totaal) from Factuur");
+        Double result = (Double) query.getSingleResult();
+        System.out.println("Totale gemiddelde omzet per klant: "+result);
+        query = manager.createQuery(
+                "select avg(totaal), avg(korting) from Factuur");
+        result = (Double) query.getSingleResult();
+        System.out.println("Totale Gemiddelde Korting: "+result);
     }
 }
