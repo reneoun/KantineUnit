@@ -3,6 +3,7 @@ package yolo;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Iterator;
 
 @Entity
@@ -100,9 +101,9 @@ public class Factuur implements Serializable {
                 +"de klant heeft afgerekent op "+ datum;
     }
 
-    public void addRegel(FactuurRegel factuurRegel) {
-        if (!regels.contains(factuurRegel)) {
-            regels.add(factuurRegel);
-        }
-    }
+//    public void addRegel(FactuurRegel factuurRegel) {
+//        if (!regels.contains(factuurRegel)) {
+//            regels.add(factuurRegel);
+//        }
+//    }
 }
