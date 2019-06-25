@@ -1,5 +1,6 @@
 package nl.hanze.jpa;
 
+import yolo.KantineSimulatie_2;
 import org.hibernate.Session;
 import javax.persistence.*;
 import java.util.Arrays;
@@ -10,6 +11,8 @@ public class Main {
     private static final EntityManagerFactory ENTITY_MANAGER_FACTORY = Persistence
             .createEntityManagerFactory("JPAVoorbeeld");
     private EntityManager manager;
+
+
 
     public static void main(String[] args) {
         Main runner  = new Main();
@@ -90,6 +93,10 @@ public class Main {
         listTelefoons(readAllTelefoons(), "Lijstje met telefoons");
         aggregateExamples();
 
+        //Start Simulatie
+        KantineSimulatie_2 sim = new KantineSimulatie_2(manager);
+        sim.simuleer(10);
+
         // Close the EntityManager
         manager.close();
         // NEVER FORGET TO CLOSE THE ENTITY_MANAGER_FACTORY
@@ -143,10 +150,13 @@ public class Main {
 
         st2.addStudie(studie2);
         st2.setKaart(kaart2);
+
         st3.addStudie(studie3);
         st3.setKaart(kaart3);
+
         st4.addStudie(studie4);
         st4.setKaart(kaart4);
+
         st5.addStudie(studie5);
         st5.setKaart(kaart5);
 
