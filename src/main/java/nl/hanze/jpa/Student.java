@@ -1,22 +1,13 @@
 package nl.hanze.jpa;
-import java.util.List;
-import java.util.ArrayList;
+import javax.persistence.*;
 import java.io.Serializable;
-
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Embedded;
-import javax.persistence.JoinTable;
-import javax.persistence.OneToMany;
-import javax.persistence.NamedQuery;
-import javax.persistence.JoinColumn;
-import javax.persistence.CascadeType;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "student")
 @NamedQuery(name = "Student.findBySchool", query = "SELECT DISTINCT(s) FROM Student s JOIN s.studies stu WHERE stu.school_name=:name AND stu.student=s.id")
+
 // De vergelijkbare query in MySQL is:
 // SELECT * FROM Student s JOIN studie stu WHERE stu.school_name="SCMI" AND
 // stu.student_id=s.id

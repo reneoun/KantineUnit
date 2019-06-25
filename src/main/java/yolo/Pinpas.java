@@ -22,6 +22,6 @@ public class Pinpas extends Betaalwijze {
             }
             else {
                 throw new TeWeinigGeldException("U heeft onvoldoende saldo ");
-    }
+            }
     }
 }
