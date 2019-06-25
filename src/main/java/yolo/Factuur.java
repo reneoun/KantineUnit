@@ -1,9 +1,6 @@
 package yolo;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.io.Serializable;
 import java.util.Iterator;
@@ -12,6 +9,7 @@ import java.util.Iterator;
 public class Factuur implements Serializable {
 
     @Id
+    @GeneratedValue
     @Column(name = "id", unique = true)
     private Long id;
 

@@ -2,6 +2,7 @@ package yolo;
 
 import yolo.Dienblad;
 
+import javax.persistence.EntityTransaction;
 import java.time.LocalDate;
 
 public class Kassa {
@@ -22,6 +23,23 @@ public class Kassa {
 
         LocalDate datum = LocalDate.now();
         Factuur factuur = new Factuur(klant,datum);
+
+        if (factuur.getTotaal()!=0){
+            EntityTransaction transaction = null;
+            try {
+                // Get a transaction, sla de student gegevens op en commit de transactie
+                transaction = manager.getTransaction();
+                transaction.begin();
+                manager.persist(factuur);
+                transaction.commit();
+            } catch (Exception ex) {
+                // If there are any exceptions, roll back the changes
+                if (transaction != null) {
+                    transaction.rollback();
+                }
+                ex.printStackTrace();
+            }
+        }
 
         omzet += factuur.getTotaal();
     }
