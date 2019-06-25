@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.io.Serializable;
 import java.util.Iterator;
+import java.util.ArrayList;
 
 @Entity
 public class Factuur implements Serializable {
@@ -21,6 +22,9 @@ public class Factuur implements Serializable {
 
     @Column(name = "totaal")
     private double totaal;
+
+    @Embedded
+    private ArrayList<FactuurRegel> regels;
 
     public Factuur() {
         totaal = 0;

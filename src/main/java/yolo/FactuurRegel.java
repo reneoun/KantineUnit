@@ -1,8 +1,11 @@
 package yolo;
 
+import javax.persistence.Embeddable;
 import java.io.Serializable;
 
+@Embeddable
 public class FactuurRegel implements Serializable {
+
 
     private Long id;
     private Factuur factuur;
@@ -16,7 +19,7 @@ public class FactuurRegel implements Serializable {
     }
 
     public String toString(){
-    
+        return null;
     }
 
 
