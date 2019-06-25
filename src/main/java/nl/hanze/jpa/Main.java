@@ -104,6 +104,9 @@ public class Main {
         //Gemiddelde omzet & korting
         getGemiddelde();
 
+        //Top 3 aankopen
+        getTopDrie();
+
         // Close the EntityManager
         manager.close();
         // NEVER FORGET TO CLOSE THE ENTITY_MANAGER_FACTORY
@@ -407,8 +410,17 @@ public class Main {
         Double result = (Double) query.getSingleResult();
         System.out.println("Totale gemiddelde omzet per klant: "+result);
         query = manager.createQuery(
-                "select avg(totaal), avg(korting) from Factuur");
+                "select avg(korting) from Factuur");
         result = (Double) query.getSingleResult();
         System.out.println("Totale Gemiddelde Korting: "+result);
+    }
+
+    public void getTopDrie(){
+        Query query = manager.createQuery(
+                "SELECT totaal FROM Factuur order by totaal desc");
+        List<Object> resultList = query.getResultList();
+        for (int s = 0; s < 3; s++){
+            System.out.println((s+1)+". omzet: "+ (Double) resultList.get(s));
+        }
     }
 }
