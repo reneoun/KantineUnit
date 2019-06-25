@@ -4,8 +4,7 @@ public class Administratie {
 
     private static final int DAYS_IN_WEEK = 7;
 
-    private Administratie(){
-    }
+    private Administratie(){}
 
     /**
      * Deze methode berekent van de int array aantal de gemiddelde waarde
@@ -16,9 +15,11 @@ public class Administratie {
     public static double berekenGemiddeldAantal(int[] aantal) {
         // method body omitted
         double sum = 0;
+
         for (int i : aantal) {
             sum += i;
         }
+
         return (sum/aantal.length);
     }
 
@@ -31,9 +32,11 @@ public class Administratie {
     public static double berekenGemiddeldeOmzet(double[] omzet) {
         // method body omitted
         double sum = 0;
+
         for (double i : omzet) {
             sum += i;
         }
+
         return (sum/omzet.length);
     }
 

@@ -1,19 +1,12 @@
 package nl.hanze.jpa;
 
+import javax.persistence.*;
 import java.io.Serializable;
-
-import javax.persistence.Id;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.persistence.ManyToOne;
-import javax.persistence.JoinColumn;
-import javax.persistence.CascadeType;
-import javax.persistence.GeneratedValue;
 
 @Entity
 @Table(name = "studie")
 public class StudieInschrijving implements Serializable {
+
     @Id
     @GeneratedValue
     private long studie_id;

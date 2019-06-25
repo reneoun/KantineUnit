@@ -1,7 +1,5 @@
 package yolo;
 
-import yolo.Dienblad;
-
 import javax.persistence.EntityTransaction;
 import java.time.LocalDate;
 

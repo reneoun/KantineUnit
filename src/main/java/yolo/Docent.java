@@ -1,7 +1,5 @@
 package yolo;
 
-import javax.print.DocFlavor;
-
 public class Docent extends Persoon implements KortingskaartHouder{
 
     private String afdeling;

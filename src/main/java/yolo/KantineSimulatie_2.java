@@ -1,6 +1,5 @@
 package yolo;
 
-
 import java.util.*;
 
 public class KantineSimulatie_2 {
@@ -134,7 +133,6 @@ public class KantineSimulatie_2 {
                 if (manOfVrouw == 0) geslacht = 'M';
                 else if (manOfVrouw == 1) geslacht = 'V';
 
-
                 // 89 Studenten worden hier gemaakt.
                 if (x<89) {
 
@@ -198,10 +196,8 @@ public class KantineSimulatie_2 {
 
             }
 
-
             // laat de personen maar komen...
             for(int j = 0; j < aantalpersonen; j++) {
-
 
                 // maak persoon en dienblad aan, koppel ze
                 // en bedenk hoeveel artikelen worden gepakt
@@ -210,8 +206,6 @@ public class KantineSimulatie_2 {
 
                 Dienblad dienblad = new Dienblad();
                 dienblad.setPersoon(personen.get(r));
-
-
 
                 int aantalartikelen = getRandomValue(MIN_ARTIKELEN_PER_PERSOON,MAX_ARTIKELEN_PER_PERSOON);
 
@@ -242,16 +236,12 @@ public class KantineSimulatie_2 {
             // zijn gekomen(printf gebruiken)
             System.out.println("Dag "+(i+1)+": Omzet van "+(Math.round(kantine.hoeveelheidGeldInKassa()*100))/100+" euro & "+kantine.aantalArtikelen()+" artikel afgerekend.");
 
-
-
             // reset de kassa voor de volgende dag
             kantine.resetKassa();
         }
     }
 
-
     public static void main(String[] args) {
-
 
         int[] getallen = {45, 56, 34, 39, 40, 31};
         double[] omzet = {567.70, 498.25, 458.90};

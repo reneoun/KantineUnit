@@ -1,8 +1,8 @@
 package nl.hanze.jpa;
 
-import yolo.Factuur;
-import yolo.KantineSimulatie_2;
 import org.hibernate.Session;
+import yolo.KantineSimulatie_2;
+
 import javax.persistence.*;
 import java.util.Arrays;
 import java.util.List;
@@ -121,9 +121,11 @@ public class Main {
         List<Object[]> resultList = query.getResultList();
         resultList.forEach(r -> System.out.println(Arrays.toString(r)));
         double totaalGemiddelde=0.0;
+
         for(Object[] r: resultList) { 
         	totaalGemiddelde += (Double)r[1];
         }
+
         System.out.println("Totaal:" + totaalGemiddelde);
         query = manager.createQuery(
         		"SELECT COUNT(*) FROM Student s");
@@ -180,6 +182,7 @@ public class Main {
         create(st4);
         create(st5);
     }
+
     /**
      * Toon een lijst van alle studenten.
      *
@@ -382,17 +385,6 @@ public class Main {
         return telefoons;
     }
 
-//    public void listOmzet(List<Factuur> facturen, String comment) {
-//        System.out.println(comment);
-//        if (!facturen.isEmpty()) {
-//            for (Factuur stu : facturen) {
-//                System.out.println(stu);
-//            }
-//        } else {
-//            System.out.println("Leeg");
-//        }
-//    }
-//
     public void getOmzet() {
         Query query = manager.createQuery(
                 "SELECT SUM(totaal)FROM Factuur");
@@ -408,11 +400,11 @@ public class Main {
         Query query = manager.createQuery(
                 "select avg(totaal) from Factuur");
         Double result = (Double) query.getSingleResult();
-        System.out.println("Totale gemiddelde omzet per klant: "+result);
+        System.out.println("Totale gemiddelde omzet per klant: "+ result);
         query = manager.createQuery(
                 "select avg(korting) from Factuur");
         result = (Double) query.getSingleResult();
-        System.out.println("Totale Gemiddelde Korting: "+result);
+        System.out.println("Totale gemiddelde korting: "+ result);
     }
 
     public void getTopDrie(){

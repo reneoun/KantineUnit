@@ -15,7 +15,6 @@ public class Persoon {
         geboortedatum = d;
         geslacht = Character.toLowerCase(g);
 
-
         if (!(geslacht == 'm' || geslacht == 'v')){
             System.out.println("Je hebt geen m of v ingevuld, LUL!");
         }
@@ -81,8 +80,6 @@ public class Persoon {
 
     @Override
     public String toString() {
-        String vnaam = "naam:" + getVoornaam()+"\n";
-
         return this.voornaam+" "+this.achternaam+" "+this.bsn+" "+geboortedatum.getDatumAsString()+" "+getGeslacht();
     }
 }

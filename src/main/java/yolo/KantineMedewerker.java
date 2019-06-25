@@ -1,7 +1,5 @@
 package yolo;
 
-
-
 public class KantineMedewerker extends Persoon implements KortingskaartHouder {
 
     private int mederwerkersnummer;

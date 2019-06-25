@@ -15,26 +15,6 @@ public class Kantine {
         kassa = new Kassa(kassarij, this.manager);
     }
 
-
-
-    /**
-     * In deze methode wordt een Persoon en Dienblad gemaakt
-     * en aan elkaar gekoppeld. Maak twee Artikelen aan
-     * en plaats deze op het dienblad. Tenslotte sluit de
-     * Persoon zich aan bij de rij voor de kassa.
-     */
-//    public void loopPakSluitAan() {
-//        // method body omitted
-//        Persoon persoon = new Persoon();
-//
-//        Dienblad dienblad = new Dienblad();
-//        dienblad.voegToe(new Artikel("dildo", 5.99));
-//        dienblad.voegToe(new Artikel("buttplug", 9.99));
-//        dienblad.setPersoon(persoon);
-//
-//        kassarij.sluitAchteraan(persoon);
-//    }
-
     public void setKantineAanbod(KantineAanbod kantineAanbod){
         this.kantineAanbod = kantineAanbod;
     }

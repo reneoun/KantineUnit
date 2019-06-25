@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 
 @Entity
 public class Telefoon {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
